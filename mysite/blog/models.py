@@ -3,7 +3,10 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 
 # Create your models here.
-
+class PublishedManager(models.Manager):
+    # Return all published posts in reverse chronological order (newest first).
+    def get_queryset(self):
+        return super().get_queryset().filter(status=Post.status.PUBLISHED)
 class Post(models.Model):
     class Status(models.TextChoices):
         DRAFT='DR', 'Draft'
@@ -17,6 +20,8 @@ class Post(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     status = models.CharField(max_length=2, choices=Status.choices, default=Status.DRAFT)
+
+    published = PublishedManager()
     class Meta:
         ordering = ['-publish']
         indexes = [models.Index(fields=['-publish']),]
