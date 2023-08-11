@@ -6,7 +6,8 @@ from django.utils import timezone
 class PublishedManager(models.Manager):
     # Return all published posts in reverse chronological order (newest first).
     def get_queryset(self):
-        return super().get_queryset().filter(status=Post.status.PUBLISHED)
+        return super().get_queryset()\
+            .filter(status=Post.Status.PUBLISHED)
 class Post(models.Model):
     class Status(models.TextChoices):
         DRAFT='DR', 'Draft'
