@@ -21,6 +21,7 @@ class Post(models.Model):
     updated = models.DateTimeField(auto_now=True)
     status = models.CharField(max_length=2, choices=Status.choices, default=Status.DRAFT)
 
+    objects = models.Manager()
     published = PublishedManager()
     class Meta:
         ordering = ['-publish']
