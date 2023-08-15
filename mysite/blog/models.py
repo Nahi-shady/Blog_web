@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse
 from django.utils import timezone
 
 # Create your models here.
@@ -27,6 +28,9 @@ class Post(models.Model):
     class Meta:
         ordering = ['-publish']
         indexes = [models.Index(fields=['-publish']),]
+    
+    def get_absolute_url(self):
+        return reverse('blog:post_detail', args=[self.id])
 
     def __str__(self):
         return self.title

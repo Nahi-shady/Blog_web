@@ -6,10 +6,10 @@
     <h1>Blog posts</h1>
     {% for post in posts %}
         <h2>
-            <a href="{% url 'blog:post_detail' post.id %}"> {{post.title}} </a>
+            <a href="{{ post.get_absolute_url }}"> {{post.title}} </a>
         </h2>
         
-        <p>{{ post.body|truncatewords:30|linebreaks }}</p>
+        <p>{{ post.body|truncatewords:9|linebreaks }}</p>
         
         <p class="date"><b>Posted by {{post.author}}</b> <i>{{post.publish}}</i></p>
         <hr>
