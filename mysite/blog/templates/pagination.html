@@ -2,11 +2,13 @@
     <span class="step-links">
         {% if page.has_previous %}
             <a href="?page={{ page.previous_page_number }}">Previous </a>
+            <span class="date">...</span>
         {% endif %}
         <span class="current">
             {{ page.number }}
         </span>
         {% if page.has_next %}
+            <span class="date">...</span>
             <a href="?page={{ page.next_page_number }}"> Next</a>
         {% endif %}
     </span>
