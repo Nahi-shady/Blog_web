@@ -28,8 +28,8 @@ def post_detail(request, year,month, day, post):
 
 
 
-def post_share(request, id):
-    post = get_object_or_404(Post, id=id, status=Post.Status.PUBLISHED)
+def post_share(request, post_id):
+    post = get_object_or_404(Post, id=post_id, status=Post.Status.PUBLISHED)
     sent = False
 
     if request.method == 'POST':
