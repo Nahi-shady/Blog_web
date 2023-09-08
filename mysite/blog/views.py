@@ -14,14 +14,6 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-# Create your views here.
-
-# class PostListView(ListView):
-#     queryset = Post.published.all()
-#     template_name = 'blog/post/list.html'
-#     context_object_name = 'posts'
-#     paginate_by = 2
-
 def post_list(request, tag_slug=None):
     post_list = Post.published.all()
     tag = None
